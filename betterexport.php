@@ -17,11 +17,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 if (!defined('ABSPATH')) exit();
 
-$export_import_functions = array();
+$betterexport_functions = array();
 
 function add_export_import( $tag, $export_function_to_add, $import_function_to_add ) {
-	global $export_import_functions;
-	$export_import_functions[$tag] = array( 'export_function' => $export_function_to_add, 'import_function' => $import_function_to_add );
+	global $betterexport_functions;
+	$betterexport_functions[$tag] = array( 'export_function' => $export_function_to_add, 'import_function' => $import_function_to_add );
 	return true;
 }
 
@@ -34,24 +34,24 @@ function ajax_export() {
 }
 
 function betterExport() {
-	global $export_import_functions;
+	global $betterexport_functions;
 	$data = array();
-	foreach ( $export_import_functions as $tag => $functions ) {
+	foreach ( $betterexport_functions as $tag => $functions ) {
 		$data[$tag] = call_user_func_array($functions[ 'export_function' ], array());
 	}
 	return json_encode($data, JSON_PRETTY_PRINT);
 }
 
 function betterImport($data) {
-	global $export_import_functions;
+	global $betterexport_functions;
 
 	if (is_string( $data )) {
 		$data = json_decode( $data );
 	}
 
 	foreach ( array_keys( $data ) as $tag ) {
-		if (isset( $export_import_functions[ $tag ] )) {
-			call_user_func_array( $export_import_functions[ $tag ], array( $data[ $tag ] ));
+		if (isset( $betterexport_functions[ $tag ] )) {
+			call_user_func_array( $betterexport_functions[ $tag ], array( $data[ $tag ] ));
 		}
 	}
 }
