@@ -30,6 +30,12 @@ Example:
 		update_option( 'my_background', $data[ 'background_color' ] );
 	}
 
-	add_export_import( 'my_theme_stuff', 'my_theme_options_export', 'my_theme_options_import' );
+	if (function_exists( 'add_export_import' )) { // Only if plugin is active...
+		add_export_import( 'my_theme_stuff', 'my_theme_options_export', 'my_theme_options_import' );
+	}
 
 
+Filters - users
+---------------
+
+* exports_users_logins - An array of user logins to export into export file. Use this filter to restrict which users to be exported.
