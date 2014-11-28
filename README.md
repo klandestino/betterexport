@@ -50,4 +50,5 @@ Example:
 Filters - users
 ---------------
 
-* exports_users_logins - An array of user logins to export into export file. Use this filter to restrict which users to be exported.
+* betterexports_users_logins_to_export - An array of user logins to export into export file. Use this filter to restrict which users to be exported.
+* betterexports_users_logins_to_import - An array of user logins to import from an export file. Use this filter to restrict which users to be imported.
