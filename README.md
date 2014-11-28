@@ -30,6 +30,13 @@ To output the export JSON to stdout:
 	wp betterexport export --stdout
 
 
+### Importing
+
+Pipe JSON into WP-Cli this way:
+
+	cat exportfile.json | wp betterexport import --stdin
+
+
 ## HTTP/AJAX Exports
 
 To make it easier to export from remote, i.e. automatic exports from your production environment, you can make exports with just a simple HTTP request.
@@ -42,13 +49,6 @@ How to add BETTEREXPORT_HTTP_SECRET to your wp-config.php (before the "That's al
 Example, using command line HTTP client cURL, outputing an export JSON:
 
 	curl 'http://example.org/wp-admin/admin-ajax.php?action=export&secret=th15isAs3cr3t'
-
-
-### Importing
-
-Pipe JSON into WP-Cli this way:
-
-	cat exportfile.json | wp betterexport import --stdin
 
 
 ## How to add your own data to export files
