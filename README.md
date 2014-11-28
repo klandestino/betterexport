@@ -13,6 +13,26 @@ Still under heavy development. Not production ready.
 * Support for WP-Cli.
 
 
+## How to add your own data to export files
+
+Adding your own data to export files is simple and follow normal WordPress patterns.
+
+Example:
+
+	function my_theme_options_export() {
+		$data = array( 'background_color' => get_option( 'my_background' ) );
+		return $data;
+	}
+	
+	function my_theme_options_import($data) {
+		update_option( 'my_background', $data[ 'background_color' ] );
+	}
+
+	if (function_exists( 'add_export_import' )) { // Only if plugin is active...
+		add_export_import( 'my_theme_stuff', 'my_theme_options_export', 'my_theme_options_import' );
+	}
+
+
 ## WP-Cli Commands
 
 ### Exporting
@@ -49,26 +69,6 @@ How to add BETTEREXPORT_HTTP_SECRET to your wp-config.php (before the "That's al
 Example, using command line HTTP client cURL, outputing an export JSON:
 
 	curl 'http://example.org/wp-admin/admin-ajax.php?action=export&secret=th15isAs3cr3t'
-
-
-## How to add your own data to export files
-
-Adding your own data to export files is simple and follow normal WordPress patterns.
-
-Example:
-
-	function my_theme_options_export() {
-		$data = array( 'background_color' => get_option( 'my_background' ) );
-		return $data;
-	}
-	
-	function my_theme_options_import($data) {
-		update_option( 'my_background', $data[ 'background_color' ] );
-	}
-
-	if (function_exists( 'add_export_import' )) { // Only if plugin is active...
-		add_export_import( 'my_theme_stuff', 'my_theme_options_export', 'my_theme_options_import' );
-	}
 
 
 ## Generic filters
