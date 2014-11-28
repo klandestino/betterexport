@@ -14,6 +14,18 @@ Some principles
 * We are sorting the keys and pretty printing the JSON, to get as readable diffs as possible between exports.
 
 
+WP-Cli Commands
+---------------
+
+To save the export JSON in a timestamped file:
+
+	wp betterexport export
+
+To output the export JSON to stdout:
+
+	wp betterexport export --stdout
+
+
 How to add your own data to export files
 ----------------------------------------
 

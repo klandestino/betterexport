@@ -56,5 +56,9 @@ function betterImport($data) {
 	}
 }
 
-require_once( dirname( __FILE__ ) . '/users.php');
+require_once( dirname( __FILE__ ) . '/users.php' );
+
+if ( defined('WP_CLI') && WP_CLI ) {
+	require_once( dirname( __FILE__ ) . '/wpcli.php' );
+}
 
