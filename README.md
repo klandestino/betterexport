@@ -1,6 +1,6 @@
 # betterexport
 
-Better WordPress exports and imports.
+This adds import/export functionality to WordPress, implemented the way we think it should be implemented.
 
 Still under heavy development. Not production ready.
 
@@ -9,7 +9,8 @@ Still under heavy development. Not production ready.
 
 * Plugins and themes can add their own options/data into the export files, registering export and import functions.
 * The export is in JSON format.
-* We are sorting the keys and pretty printing the JSON, to get as readable diffs as possible between exports.
+* We are sorting the keys and pretty printing the JSON, to get as readable diffs as possible between exports. (To make it easier to see what has happened on your site.)
+* Support for WP-Cli.
 
 
 ## WP-Cli Commands
