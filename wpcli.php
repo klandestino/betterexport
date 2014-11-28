@@ -2,7 +2,7 @@
 
 class BetterExport_WPCLI_Command extends WP_CLI_Command {
 	/**
-	 * Output the export JSON to stdout.
+	 * Export data.
 	 * 
 	 * ## OPTIONS
 	 * 
@@ -31,6 +31,27 @@ class BetterExport_WPCLI_Command extends WP_CLI_Command {
 		}
 		WP_CLI::success( "Exported to file: " . $filename ); 
 
+	}
+
+	/**
+	 * Import data.
+	 * 
+	 * ## OPTIONS
+	 * 
+	 *     --stdin
+	 *
+	 * ## EXAMPLES
+	 * 
+	 *     wp betterexport import --stdin
+	 *
+	 * @synopsis
+	 */
+	function import( $args, $assoc_args ) {
+		if ( isset( $assoc_args[ 'stdin' ] ) ) {
+			betterImport(file_get_contents( "php://stdin" ));
+			WP_CLI::success( "Imported." );
+		}
+		WP_CLI::error( "No input." );
 	}
 }
 

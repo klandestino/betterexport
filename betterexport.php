@@ -46,12 +46,12 @@ function betterImport($data) {
 	global $betterexport_functions;
 
 	if (is_string( $data )) {
-		$data = json_decode( $data );
+		$data = json_decode  ( $data, true );
 	}
 
 	foreach ( array_keys( $data ) as $tag ) {
 		if (isset( $betterexport_functions[ $tag ] )) {
-			call_user_func_array( $betterexport_functions[ $tag ], array( $data[ $tag ] ));
+			call_user_func_array( $betterexport_functions[ $tag ][ 'import_function' ], array( $data[ $tag ] ));
 		}
 	}
 }
