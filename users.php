@@ -19,17 +19,8 @@ function betterexport_users_export() {
 
 		$user = $users[ $login ];
 
-		$caps = array();
-		foreach ($user->caps as $cap => $val) {
-			if ( $val ) {
-				$caps[] = $cap;
-			}
-		}
-		sort( $caps );
-
 		$data[ $login ] = array(
-			'user_pass' => $user->user_pass,
-			'caps' => $caps
+			'user_pass' => $user->user_pass
 		);
 		ksort( $data[ $login ] );
 
@@ -66,10 +57,12 @@ function betterexport_users_import($data) {
 			continue;
 		}
 
+		$user = get_user_by( 'id', $user_id );
+
 		if ( isset( $userinfo[ 'user_pass' ] ) ) {
 			$wpdb->update( $wpdb->users, array('user_pass' => $userinfo[ 'user_pass' ] ), array( 'ID' => $user_id ) );
 		}
-		
+
 	}
 }
 
