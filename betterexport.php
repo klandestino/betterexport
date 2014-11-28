@@ -25,12 +25,16 @@ function add_export_import( $tag, $export_function_to_add, $import_function_to_a
 	return true;
 }
 
-add_action ( 'wp_ajax_export', 'ajax_export' );
-add_action ( 'wp_ajax_nopriv_export', 'ajax_export' );
+if ( defined( 'BETTEREXPORT_HTTP_SECRET' ) ) {
+	add_action ( 'wp_ajax_export', 'ajax_export' );
+	add_action ( 'wp_ajax_nopriv_export', 'ajax_export' );
+}
 
 function ajax_export() {
-	echo betterExport();
-	exit();
+	if ( isset( $_GET[ 'secret' ] ) && $_GET[ 'secret' ] == BETTEREXPORT_HTTP_SECRET ) {
+		echo betterExport();
+		exit();
+	}
 }
 
 function betterExport() {
