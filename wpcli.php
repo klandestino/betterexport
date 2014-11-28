@@ -6,11 +6,13 @@ class BetterExport_WPCLI_Command extends WP_CLI_Command {
 	 * 
 	 * ## OPTIONS
 	 * 
+	 *     --overwrite - Will overwrite export file, if it exists already.
 	 *     --stdout
 	 *
 	 * ## EXAMPLES
 	 * 
 	 *     wp betterexport export
+	 *     wp betterexport export --overwrite
 	 *     wp betterexport export --stdout
 	 *
 	 * @synopsis
@@ -22,8 +24,8 @@ class BetterExport_WPCLI_Command extends WP_CLI_Command {
 			exit();
 		}
 		
-		$filename = 'betterexport-' . time() . '.json';
-		if ( file_exists( $filename ) ) {
+		$filename = apply_filters( 'betterexport_export_filename', 'betterexport-' . time() . '.json' );
+		if ( !isset( $assoc_args['overwrite'] ) && file_exists( $filename ) ) {
 			WP_CLI::error( "File exists: " . $filename ); 
 		}
 		if (file_put_contents( $filename, betterExport() ) === false) {

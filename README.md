@@ -21,6 +21,10 @@ To save the export JSON in a timestamped file:
 
 	wp betterexport export
 
+To save the export JSON in a timestamped file (and overwrite if it already exists):
+
+	wp betterexport export --overwrite
+
 To output the export JSON to stdout:
 
 	wp betterexport export --stdout
@@ -50,6 +54,11 @@ Example:
 	if (function_exists( 'add_export_import' )) { // Only if plugin is active...
 		add_export_import( 'my_theme_stuff', 'my_theme_options_export', 'my_theme_options_import' );
 	}
+
+
+## Generic filters
+
+* betterexport_export_filename - Filter for the export filename.
 
 
 ## Users import/export
