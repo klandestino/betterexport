@@ -41,7 +41,7 @@ How to add BETTEREXPORT_HTTP_SECRET to your wp-config.php (before the "That's al
 
 Example, using command line HTTP client cURL, outputing an export JSON:
 
-	curl http://example.org/wp-admin/admin-ajax.php?action=export&secret=th15isAs3cr3t
+	curl 'http://example.org/wp-admin/admin-ajax.php?action=export&secret=th15isAs3cr3t'
 
 
 ### Importing
