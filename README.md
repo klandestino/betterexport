@@ -15,6 +15,8 @@ Still under heavy development. Not production ready.
 
 ## WP-Cli Commands
 
+### Exporting
+
 To save the export JSON in a timestamped file:
 
 	wp betterexport export
@@ -22,6 +24,12 @@ To save the export JSON in a timestamped file:
 To output the export JSON to stdout:
 
 	wp betterexport export --stdout
+
+### Importing
+
+Pipe JSON into WP-Cli this way:
+
+	cat exportfile.json | wp betterexport import --stdin
 
 
 ## How to add your own data to export files
