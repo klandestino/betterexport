@@ -29,6 +29,16 @@ To output the export JSON to stdout:
 
 	wp betterexport export --stdout
 
+
+## AJAX Exports
+
+To make it easier to export from remote, i.e. automatic exports from your production environment, you can make exports with just a simple HTTP request.
+
+Example, using command line HTTP client cURL, outputing an export JSON:
+
+	curl http://example.org/wp-admin/admin-ajax.php?action=export
+
+
 ### Importing
 
 Pipe JSON into WP-Cli this way:
