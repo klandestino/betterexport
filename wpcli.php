@@ -52,8 +52,9 @@ class BetterExport_WPCLI_Command extends WP_CLI_Command {
 		if ( isset( $assoc_args[ 'stdin' ] ) ) {
 			betterImport(file_get_contents( "php://stdin" ));
 			WP_CLI::success( "Imported." );
+		} else {
+			WP_CLI::error( "No input." );
 		}
-		WP_CLI::error( "No input." );
 	}
 }
 
